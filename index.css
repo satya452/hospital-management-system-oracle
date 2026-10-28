@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+/* ─── Theme tokens ─────────────────────────────────────────────────── */
+:root {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-sidebar: #ffffff;
+  --bg-card: #ffffff;
+  --bg-muted: #f1f5f9;
+  --bg-hover: rgba(100, 116, 139, 0.07);
+  --border: #e2e8f0;
+  --border-light: rgba(226, 232, 240, 0.8);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --teal-badge-bg: #f0fdfa;
+  --teal-badge-border: #99f6e4;
+  --teal-badge-text: #0f766e;
+  --emerald-bg: #f0fdf4;
+  --emerald-border: #bbf7d0;
+  --emerald-text: #15803d;
+  --scrollbar-track: #f1f5f9;
+  --scrollbar-thumb: #cbd5e1;
+  --scrollbar-thumb-hover: #94a3b8;
+}
+
+html.dark {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-sidebar: #161b22;
+  --bg-card: #1c2130;
+  --bg-muted: #1e2533;
+  --bg-hover: rgba(148, 163, 184, 0.08);
+  --border: #2d3748;
+  --border-light: rgba(45, 55, 72, 0.9);
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --teal-badge-bg: rgba(20, 184, 166, 0.12);
+  --teal-badge-border: rgba(20, 184, 166, 0.3);
+  --teal-badge-text: #2dd4bf;
+  --emerald-bg: rgba(16, 185, 129, 0.1);
+  --emerald-border: rgba(16, 185, 129, 0.3);
+  --emerald-text: #34d399;
+  --scrollbar-track: #161b22;
+  --scrollbar-thumb: #334155;
+  --scrollbar-thumb-hover: #475569;
+}
+
+/* ─── Base ─────────────────────────────────────────────────────────── */
+@layer base {
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* ─── Theme toggle animation ─────────────────────────────────────────── */
+.theme-toggle {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  border-radius: 9999px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background 0.35s ease, box-shadow 0.2s ease;
+  background: linear-gradient(135deg, #0ea5e9, #6366f1);
+  box-shadow: 0 0 0 2px transparent;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+}
+
+.theme-toggle.light {
+  background: linear-gradient(135deg, #fbbf24, #f97316);
+}
+
+.theme-toggle.light:hover {
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.25);
+}
+
+.theme-toggle-knob {
+  position: absolute;
+  top: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: left 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.35s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  font-size: 12px;
+  left: 3px;
+}
+
+.theme-toggle.dark-mode .theme-toggle-knob {
+  left: 27px;
+}
+
+/* ─── Sidebar nav hover ───────────────────────────────────────────── */
+.nav-inactive:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary) !important;
+}
+
+/* ─── Card / panel base ─────────────────────────────────────────────── */
+.theme-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
